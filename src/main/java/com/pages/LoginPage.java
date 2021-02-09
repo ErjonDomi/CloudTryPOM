@@ -70,5 +70,6 @@ public class LoginPage {
         password.sendKeys(pwd);
         loginBtn.click();
         return new HomePage();
+
     }
 }

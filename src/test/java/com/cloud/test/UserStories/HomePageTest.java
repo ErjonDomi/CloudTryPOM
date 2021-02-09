@@ -29,18 +29,14 @@ public class HomePageTest extends TestBase {
         homePage=new HomePage();
         super.setUpMethod();
 
-
-
     }
 
     @Test
     public void TC01() {
         ArrayList<String> modules = new ArrayList<>(Arrays.asList("Dashboard", "Files", "Photos", "Activity", "Talk", "Mail", "Contacts", "Circles", "Calendar", "Deck"));
-        List<WebElement> list = homePage.getAllModules();
-        Sleep.sleep(3);
         int i = 0;
         for (String each : modules) {
-            Assert.assertTrue(list.get(i).getAttribute("innerHTML").contains(each));
+            Assert.assertTrue(homePage.getAllModules().get(i).getAttribute("innerHTML").contains(each));
             i++;
         }
 
@@ -48,9 +44,7 @@ public class HomePageTest extends TestBase {
     }
     @Test
     public void TC02(){
-        String actualTitle= homePage.getHomePageTitle();
-        String expectedTitle= "Dashboard - Trycloud QA";
-        Assert.assertEquals(actualTitle,expectedTitle);
+        Assert.assertEquals(homePage.getHomePageTitle(),"Dashboard - Trycloud QA");
     }
 
 
