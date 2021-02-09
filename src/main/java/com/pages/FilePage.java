@@ -20,22 +20,15 @@ public class FilePage {
     List<WebElement> selectedCheckBox;
 
 
-    public String FilePage() {
+    public String FilePageTitle() {
         return Driver.getDriver().getTitle();
     }
 
     public List<WebElement> getSelectedCheckBox(){
         selectAllCheckBox.click();
       List<WebElement>  list=selectedCheckBox;
-
       return list;
     }
-
-
-
-
-
-
 
 
 }

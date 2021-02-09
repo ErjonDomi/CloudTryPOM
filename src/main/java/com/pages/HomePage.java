@@ -11,6 +11,7 @@ import java.util.List;
 public class HomePage {
 
 
+
     @FindBy(xpath = "//ul[@id='appmenu']//a")
     List<WebElement> mainModules;
     @FindBy(xpath = "ul[id='appmenu'] a[aria-label='Files']")
