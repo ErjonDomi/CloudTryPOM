@@ -3,6 +3,7 @@
 <suite name="Suite1" verbose="1">
     <test name="SmokeTesting">
         <classes>
+
             <class name="com.cloud.test.UserStories.LoginTest"/>
 
             <class name="com.cloud.test.UserStories.HomePageTest"/>
