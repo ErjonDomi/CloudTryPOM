@@ -6,6 +6,7 @@
             <class name="com.cloud.test.UserStories.LoginTest"/>
             <class name="com.cloud.test.UserStories.HomePageTest"/>
 
+
         </classes>
     </test>
 </suite>
