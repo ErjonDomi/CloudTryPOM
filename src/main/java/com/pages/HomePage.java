@@ -14,7 +14,7 @@ public class HomePage {
 
     @FindBy(xpath = "//ul[@id='appmenu']//a")
     List<WebElement> mainModules;
-    @FindBy(xpath = "ul[id='appmenu'] a[aria-label='Files']")
+    @FindBy(xpath = "//ul[@id='appmenu']//a[@aria-label='Files']")
     WebElement filesLink;
 
     @FindBy(xpath = "//ul[@id='appmenu']//a[@aria-label='Photos']")
@@ -36,7 +36,7 @@ public class HomePage {
     WebElement circlesLink;
 
     @FindBy(xpath = "//ul[@id='appmenu']//a[@aria-label='Calendar']")
-    WebElement calendarLink;
+    private WebElement calendarLink;
 
     @FindBy(xpath = "//ul[@id='appmenu']//a[@aria-label='Deck']")
     WebElement deckLink;

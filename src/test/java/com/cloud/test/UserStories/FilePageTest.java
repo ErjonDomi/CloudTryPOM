@@ -8,20 +8,21 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class FilePageTest extends TestBase {
-FilePage filePage;
-HomePage homePage;
-    @BeforeMethod
+    FilePage filePage;
+    HomePage homePage;
+
     @Override
+    @BeforeMethod
     public void setUpMethod() {
         super.setUpMethod();
-        filePage= homePage.clickFileModule();
+        homePage=new HomePage();
+        filePage = homePage.clickFileModule();
     }
 
     @Test
-    public void TC01(){
-        Assert.assertEquals(filePage.FilePageTitle(),"Files - Trycloud QA");
+    public void TC01() {
+        Assert.assertEquals(filePage.FilePageTitle(), "Files - Trycloud QA");
     }
-
 
 
 }
