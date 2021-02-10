@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="SmokeTesting"
+           tests="3"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="8.119">
+  <properties />
+  
+  
+            <testcase name="tcase01_02" time="0.922" classname="com.cloud.test.UserStories.LoginTest" />
+                <testcase name="TC01_Title" time="0.116" classname="com.cloud.test.UserStories.LoginTest" />
+                <testcase name="TC0_Login" time="7.081" classname="com.cloud.test.UserStories.LoginTest" />
+      
+</testsuite>
