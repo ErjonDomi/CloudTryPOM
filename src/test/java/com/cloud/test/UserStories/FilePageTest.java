@@ -24,5 +24,10 @@ public class FilePageTest extends TestBase {
         Assert.assertEquals(filePage.FilePageTitle(), "Files - Trycloud QA");
     }
 
+    @Test
+    public  void TC02(){
+        Assert.assertTrue(filePage.uploadFiles("C:\\Users\\erjon\\Desktop\\ScreenShots\\erjon.txt", "erjon"));
+    }
+
 
 }
