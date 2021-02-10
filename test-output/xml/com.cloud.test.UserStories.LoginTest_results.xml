@@ -4,12 +4,12 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="8.119">
+           time="9.186">
   <properties />
   
   
-            <testcase name="tcase01_02" time="0.922" classname="com.cloud.test.UserStories.LoginTest" />
-                <testcase name="TC01_Title" time="0.116" classname="com.cloud.test.UserStories.LoginTest" />
-                <testcase name="TC0_Login" time="7.081" classname="com.cloud.test.UserStories.LoginTest" />
+            <testcase name="tcase01_02" time="1.107" classname="com.cloud.test.UserStories.LoginTest" />
+                <testcase name="TC0_Login" time="7.999" classname="com.cloud.test.UserStories.LoginTest" />
+                <testcase name="TC01_Title" time="0.080" classname="com.cloud.test.UserStories.LoginTest" />
       
 </testsuite>
