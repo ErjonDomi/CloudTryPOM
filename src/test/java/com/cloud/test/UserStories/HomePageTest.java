@@ -26,12 +26,12 @@ public class HomePageTest extends TestBase {
 
     @BeforeMethod
     public void setUpMethod() {
-        homePage=new HomePage();
+        homePage = new HomePage();
         super.setUpMethod();
 
     }
 
-    @Test
+    @Test(description = "Verify all main modules are displayed!")
     public void TC01() {
         ArrayList<String> modules = new ArrayList<>(Arrays.asList("Dashboard", "Files", "Photos", "Activity", "Talk", "Mail", "Contacts", "Circles", "Calendar", "Deck"));
         int i = 0;
@@ -42,11 +42,11 @@ public class HomePageTest extends TestBase {
 
 
     }
-    @Test
-    public void TC02(){
-        Assert.assertEquals(homePage.getHomePageTitle(),"Dashboard - Trycloud QA");
-    }
 
+    @Test(description = "Verify page's title")
+    public void TC02() {
+        Assert.assertEquals(homePage.getHomePageTitle(), "Dashboard - Trycloud QA");
+    }
 
 
 }

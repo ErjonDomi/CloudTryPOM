@@ -3,7 +3,6 @@ package com.cloud.test.UserStories;
 import com.cloud.test.base.TestBase;
 import com.pages.HomePage;
 import com.pages.TalkPage;
-import com.qa.util.Sleep;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -20,13 +19,13 @@ public class TalkModuleTest extends TestBase {
         talkPage = homePage.clickTalkLink();
     }
 
-    @Test
+    @Test(description = "Verify page's title")
     public void tc01() {
         Assert.assertEquals(talkPage.getTalksTitle(), "Talk - Trycloud QA");
 
     }
 
-    @Test
+    @Test(description = "Verify user can send message!")
     public void tc02() {
         Assert.assertTrue(talkPage.sendMessage("heyhey"));
     }

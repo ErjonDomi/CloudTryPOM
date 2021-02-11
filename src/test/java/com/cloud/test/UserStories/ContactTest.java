@@ -23,17 +23,15 @@ public class ContactTest extends TestBase {
     }
 
 
-    @Test
+    @Test(description = "Verify page's title")
     public void tc01() {
         Assert.assertEquals(contactsPage.getContactsTitle(), "Contacts - Trycloud QA");
     }
 
 
-    @Test
+    @Test(description = "Verify users can create a new contact!")
     public void tc02() {
-
         Assert.assertTrue(contactsPage.CreateNewContact("Batch 21"));
-
         Sleep.sleep(5);
 
     }

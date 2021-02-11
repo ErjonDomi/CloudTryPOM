@@ -25,32 +25,32 @@ public class LoginTest  {
 
     }
 
-    @Test
+    @Test(description = "Verify page's title")
     public void TC01_Title() {
-        String actualTitle = loginPage.getLoginPageTitle();
-        String expectedTitle = "Trycloud QA";
-        Assert.assertEquals(expectedTitle, actualTitle);
+        Assert.assertEquals("Trycloud QA",loginPage.getLoginPageTitle());
 
+
+    }
+    @Test(description = "Verify forgot password link is displayed!")
+    public void TC02_forgotPasswordLink() {
         Assert.assertTrue(loginPage.isForgotPwdLinkExist());
 
     }
 
 
-    @Test
+    @Test(description = "Verify user can login with valid credentials!")
     public void TC0_Login() {
         loginPage.enterUserName("User16");
         loginPage.enterPassword("Userpass123");
         loginPage.clickOnLogin();
     }
 
-    @Test()
+    @Test(description = "Verify user can not login with invalid credentials and message is displayed")
     public void tcase01_02() {
-        String expectedMessage = "Wrong username or password.";
         loginPage.enterWrongUserName("123");
         loginPage.enterWrongPassword("459898");
         loginPage.clickOnLogin();
-        String actualMessage= loginPage.getMessage();
-       Assert.assertTrue(actualMessage.contains(expectedMessage));
+        Assert.assertTrue(loginPage.getMessage().contains("Wrong username or password."));
     }
     @AfterMethod()
     public void tearDown(){
