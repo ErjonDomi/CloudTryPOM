@@ -4,6 +4,7 @@ import com.qa.factory.Driver;
 import com.qa.util.TakeScreenShots;
 import com.qa.util.UploadFile;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,39 +30,39 @@ public class FilePage {
     @FindBy(xpath = "//label[@for='file_upload_start']")
     WebElement uploadFile;
 
-    @FindBy(xpath = "//a[contains(text(),'All files')]")
-    private WebElement allFiles;
-    @FindBy(xpath = "//a[contains(text(),'Recent')]")
-    private WebElement recent;
-    @FindBy(xpath = "//ul[@class='with-icon']/li[3]")
-    private WebElement favorites;
-    @FindBy(xpath = "//a[contains(text(),'Shares')]")
-    private WebElement shares;
-    @FindBy(xpath = "//a[contains(text(),'Tags')]")
-    private WebElement tags;
-    @FindBy(xpath = "//a[contains(text(),'Deleted Files')]")
-    private WebElement deletedFiles;
-    @FindBy(xpath = "//button[contains(text(),'Settings')]")
-    private WebElement settings;
-    @FindBy(css = "a[class='button new']")
-    private WebElement addNewFileButton;
+
     @FindBy(xpath = "//input[@type='file']")
     private WebElement fileUpload;
 
-    @FindBy(xpath = "(//span[@class='icon icon-more'])[2]")
-    private WebElement actionIcon;
+    @FindBy(xpath = "//span[normalize-space()='Add to favorites']")
+    private WebElement addToFavorites;
 
-    @FindBy(xpath = "//a[@class='menuitem action action-favorite permanent']")
-    private WebElement addnRemoveFavorites;
+    @FindBy(css = "a[class='nav-icon-favorites svg']")
+    WebElement favorites;
 
-    @FindBy(xpath = "//span[@class='innernametext']")
-    private WebElement folderInFavorites;
-    @FindBy(css = "a[data-templatename='New folder']")
-    private WebElement newFolder;
-    @FindBy(css = "input[value='New folder']")
-    private WebElement newFolderName;
-    @FindBy(xpath = "(//input[@type='submit'])[2]")
-    private WebElement newFolderSubmit;
+    @FindBy(css = "a[class='nav-icon-favorites svg']")
+    List<WebElement> favoritesList;
+
+    @FindBy(xpath = "//td[@class='filename']//span[@class='fileactions']//span[@class='hidden-visually'][normalize-space()='Actions']")
+    WebElement actionButton;
+
+    @FindBy(xpath = "//span[normalize-space()='Remove from favorites']")
+    WebElement removeFromFavorites;
+
+    @FindBy(xpath = "//span[normalize-space()='New folder']")
+    WebElement newFolder;
+
+    @FindBy(xpath = "//input[@id='view13-input-folder']")
+    WebElement folderName;
+
+    @FindBy(xpath = "//span[normalize-space()='Details']")
+    WebElement details;
+
+    @FindBy(xpath = "//a[normalize-space()='Comments']")
+    WebElement comment;
+
+    @FindBy(xpath = "//div[@class='message']")
+    WebElement enterComment;
 
 
     public String FilePageTitle() {
@@ -79,8 +80,46 @@ public class FilePage {
         addFile.click();
         uploadFile.click();
         UploadFile.fileAttachmentUsingRobot(path);
-        return Driver.getDriver().findElement(By.xpath("//span[@class='innernametext'][normalize-space()='"+fileName+"']")).isDisplayed();
+        return Driver.getDriver().findElement(By.xpath("//span[@class='innernametext'][normalize-space()='" + fileName + "']")).isDisplayed();
 
+    }
+
+    public boolean addToFavorites(String fileName) {
+        Driver.getDriver().findElement(By.xpath(" //a[@href='/index.php/apps/files?dir=//" + fileName + "']//span[@class='fileactions']//a[@class='action action-menu permanent']")).click();
+        addToFavorites.click();
+        favorites.click();
+        return Driver.getDriver().findElement(By.xpath("//td[@class='filename']//span[@class='innernametext'][normalize-space()='" + fileName + "']")).isDisplayed();
+
+    }
+
+
+    public boolean removeFromFavorites() {
+        List<WebElement> list = favoritesList;
+
+        if (favoritesList.isEmpty()) {
+            return false;
+        }
+        favorites.click();
+        actionButton.click();
+        removeFromFavorites.click();
+        List<WebElement> list1 = favoritesList;
+
+        return list.size() != list1.size();
+    }
+
+    public boolean createFolder(String name) {
+        addFile.click();
+        newFolder.click();
+        folderName.sendKeys(Keys.BACK_SPACE, name, Keys.ENTER);
+        return Driver.getDriver().findElement(By.xpath("//span[@class='innernametext'][normalize-space()='" + name + "']")).isDisplayed();
+    }
+
+    public boolean writeComment(String fileName, String comments) {
+        Driver.getDriver().findElement(By.xpath(" //a[@href='/index.php/apps/files?dir=//" + fileName + "']//span[@class='fileactions']//a[@class='action action-menu permanent']")).click();
+        details.click();
+        comment.click();
+        enterComment.sendKeys(comments, Keys.ENTER);
+        return Driver.getDriver().findElement(By.xpath("//div[normalize-space()='" + comments + "']")).isDisplayed();
     }
 
 
