@@ -64,6 +64,7 @@ public class ContactsPage {
 
     }
     public String verifyCreatedContact(){
+
     return createdContact.getText(); }
 
 }
