@@ -17,8 +17,7 @@ public class ContactsPage {
     }
 
 
-
-    @FindBy(xpath = "//button[normalize-space()='New contact']")
+    @FindBy(id = "new-contact-button")
     public WebElement newContactButton;
     @FindBy(xpath = "//input[@id='contact-fullname']")
     public WebElement fullName;
@@ -49,22 +48,35 @@ public class ContactsPage {
 
     Faker faker = new Faker();
 
-    public void CreateNewContact() {
-        fullName.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+    public boolean CreateNewContact(String name) {
+        newContactButton.click();
+        newContactButton.click();
+
+        fullName.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         fullName.sendKeys(Keys.BACK_SPACE);
-        fullName.sendKeys("Test01");
+        fullName.sendKeys(name);
+
         Sleep.sleep(10);
+        phoneHomeInput.clear();
         phoneHomeInput.sendKeys(faker.phoneNumber().phoneNumber());
+        emailInput.clear();
         emailInput.sendKeys(faker.address().firstName() + "@Gmail.com");
+        addressInput.clear();
         addressInput.sendKeys(faker.address().streetAddress());
+        postalCode.clear();
         postalCode.sendKeys(faker.address().zipCode());
+        cityAddress.clear();
         cityAddress.sendKeys(faker.address().city());
+        stateInput.clear();
         stateInput.sendKeys(faker.address().stateAbbr());
+        country.clear();
         country.sendKeys(faker.address().country());
 
-    }
-    public String verifyCreatedContact(){
+        newContactButton.click();
 
-    return createdContact.getText(); }
+        return Driver.getDriver().findElement(By.xpath("//div[normalize-space()='" + name + "']")).isDisplayed();
+
+    }
+
 
 }

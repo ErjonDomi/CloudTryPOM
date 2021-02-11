@@ -16,21 +16,19 @@ public class TalkModuleTest extends TestBase {
     @Override
     public void setUpMethod() {
         super.setUpMethod();
-        homePage=new HomePage();
+        homePage = new HomePage();
         talkPage = homePage.clickTalkLink();
     }
 
     @Test
-    public void tc01(){
-        Assert.assertEquals(talkPage.getTalksTitle(),"Talk - Trycloud QA");
+    public void tc01() {
+        Assert.assertEquals(talkPage.getTalksTitle(), "Talk - Trycloud QA");
 
     }
+
     @Test
-    public void tc02(){
-        talkPage.getNameSearchBox();
-        talkPage.clickSearchName();
-        talkPage.sendMessage();
-        Sleep.sleep(2);
+    public void tc02() {
+        Assert.assertTrue(talkPage.sendMessage("heyhey"));
     }
 
 }

@@ -1,6 +1,7 @@
 package com.pages;
 
 import com.qa.factory.Driver;
+import com.qa.util.Sleep;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -19,35 +20,37 @@ public class TalkPage {
     public WebElement searchName;
     @FindBy(xpath = "//div[@placeholder='Write message, @ to mention someone …']")
     public WebElement typeBox;
-@FindBy(className=("new-message-form__advancedinput"))
-public WebElement clickSendButton;
+    @FindBy(xpath = ("//button[@aria-label='Send message']"))
+    public WebElement clickSendButton;
 
 
-
-
-
-
-
-
-    public String getTalksTitle(){
+    public String getTalksTitle() {
         return Driver.getDriver().getTitle();
     }
-    public void getNameSearchBox(){ nameSearchBox.sendKeys("Employee1"); }
-    public void clickSearchName(){ searchName.click();}
-    public void sendMessage(){
-        typeBox.sendKeys("hello"+Keys.ENTER);
 
+    public void getNameSearchBox() {
+        nameSearchBox.sendKeys("Employee1");
+    }
+
+    public void clickSearchName() {
+        searchName.click();
+    }
+
+    public boolean sendMessage(String message) {
+
+        getNameSearchBox();
+        clickSearchName();
+        Sleep.sleep(2);
+        typeBox.sendKeys(message);
+        clickSendButton.click();
+        Sleep.sleep(2);
+        return Driver.getDriver().findElement(By.xpath("//div[contains(text(),'"+message+"')]")).isDisplayed();
 
 
     }
 
 
-
-
-
-
-
-    }
+}
 
 
 

@@ -27,12 +27,15 @@ public class ContactTest extends TestBase {
     public void tc01() {
         Assert.assertEquals(contactsPage.getContactsTitle(), "Contacts - Trycloud QA");
     }
+
+
     @Test
     public void tc02() {
-        contactsPage.clickingCreatingNewContact();
-        contactsPage.CreateNewContact();
+
+        Assert.assertTrue(contactsPage.CreateNewContact("Batch 21"));
+
         Sleep.sleep(5);
-        Assert.assertEquals(contactsPage.verifyCreatedContact(),"Test01");
+
     }
 
 }
