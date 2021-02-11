@@ -45,7 +45,7 @@ public class HomePageTest extends TestBase {
 
     @Test(description = "Verify page's title")
     public void TC02() {
-        Assert.assertEquals(homePage.getHomePageTitle(), "Dashboard - 2Trycloud QA");
+        Assert.assertEquals(homePage.getHomePageTitle(), "Dashboard - Trycloud QA");
     }
 
 

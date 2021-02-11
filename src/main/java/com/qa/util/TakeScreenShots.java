@@ -11,8 +11,8 @@ import java.io.IOException;
 
 public class TakeScreenShots {
     public static void takeScreenShot() {
-        WebDriver driver = Driver.getDriver();
-        File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+        File screen = ((TakesScreenshot)Driver.getDriver() ).getScreenshotAs(OutputType.FILE);
         String path =System.getProperty("user.dir");
         try {
             FileUtils.copyFile(screen, new File(path + "\\screenshots\\" + System.currentTimeMillis() + ".png"));
